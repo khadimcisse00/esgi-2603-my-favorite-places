@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: supersecret
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - /var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db      
+    depends_on:
+      - db
+      
+  client:
+    build: ./client
+    ports:
+      - "5173:5173"
+    environment:
+      API_URL: http://server:3000
+    depends_on:
+      - server
