@@ -1,0 +1,24 @@
+services:
+  manager:
+    image: docker:dind
+    privileged: true
+    hostname: manager
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "9443:9443"
+
+  node1:
+    image: docker:dind
+    privileged: true
+    hostname: node1
+
+  node2:
+    image: docker:dind
+    privileged: true
+    hostname: node2
+
+  node3:
+    image: docker:dind
+    privileged: true
+    hostname: node3
