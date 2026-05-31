@@ -1,0 +1,6 @@
+services:
+  hello:
+    image: alpine
+    command: sh -c "while true; do echo hello; sleep 30; done"
+    deploy:
+      mode: global
